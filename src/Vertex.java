@@ -3,41 +3,21 @@
  */
 public class Vertex {
     
-    Point3D coordinate;
+    PointDouble3D vertex;
     String name;
-    
-    public Vertex(String name, Point3D point) {
-        this.name = name;
-        this.coordinate = point;
-    }
     
     public Vertex(String name, PointDouble3D point) {
         this.name = name;
-        this.coordinate = new Point3D(point);
+        this.vertex = point;
     }
     
-    public Vertex(String name, int x, int y) {
+    public Vertex(String name, Point3D point) {
         this.name = name;
-        this.coordinate = new Point3D(x,y);
-    }
-    
-    public Vertex(String name, int x, int y, int z) {
-        this.name = name;
-        this.coordinate = new Point3D(x,y,z);
-    }
-    
-    public Vertex(String name, double x, double y) {
-        this.name = name;
-        this.coordinate = new Point3D(x, y);
-    }
-    
-    public Vertex(String name, double x, double y, double z) {
-        this.name = name;
-        this.coordinate = new Point3D(x, y, z);
+        this.vertex = new PointDouble3D(point);
     }
     
     @Override
     public String toString() {
-        return String.format("%s: %s", this.name, this.coordinate.toString());
+        return String.format("%s: %s", this.name, this.vertex.getPoint());
     }
 }

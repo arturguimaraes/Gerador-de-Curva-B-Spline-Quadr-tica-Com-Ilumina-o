@@ -106,7 +106,7 @@ public class PointDouble3D {
         return String.format("%s %s %s %s", getPoint(), getRGB(), getPainted(), getIndex());    
     }
     
-    private String getPoint() {
+    public String getPoint() {
         if (this.z == 0)
             return String.format("[%1.2f,%1.2f]", this.x, this.y);
         else

@@ -36,9 +36,6 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
         lbScreenMaxY = new javax.swing.JLabel();
         lbScreenMinX = new javax.swing.JLabel();
         lbScreenMaxX = new javax.swing.JLabel();
-        spConsole = new javax.swing.JScrollPane();
-        taConsole = new javax.swing.JTextArea();
-        lbConsole = new javax.swing.JLabel();
         tpOptionsPanel = new javax.swing.JTabbedPane();
         pnScreenConfig = new javax.swing.JPanel();
         lbScreenLimitX = new javax.swing.JLabel();
@@ -67,9 +64,13 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
         btPaintPoints = new javax.swing.JButton();
         btClearScreen = new javax.swing.JButton();
         pnSurface = new javax.swing.JPanel();
-        btDataStructure = new javax.swing.JButton();
         btLight = new javax.swing.JButton();
         btSurface = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btDataStructure = new javax.swing.JButton();
+        btDrawEdges = new javax.swing.JButton();
+        btDrawVertexes = new javax.swing.JButton();
+        btDrawFaces = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         pnTests = new javax.swing.JPanel();
         btTest1 = new javax.swing.JButton();
@@ -80,6 +81,9 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
         btSurface2 = new javax.swing.JButton();
         btLight2 = new javax.swing.JButton();
         btClearScreen2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        spConsole = new javax.swing.JScrollPane();
+        taConsole = new javax.swing.JTextArea();
         btClearConsole = new javax.swing.JButton();
 
         jMenuItem2.setText("jMenuItem2");
@@ -113,19 +117,6 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
         lbScreenMinX.setText("0");
 
         lbScreenMaxX.setText("600");
-
-        taConsole.setEditable(false);
-        taConsole.setColumns(20);
-        taConsole.setLineWrap(true);
-        taConsole.setRows(7);
-        taConsole.setToolTipText("");
-        taConsole.setWrapStyleWord(true);
-        taConsole.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        taConsole.setMaximumSize(new java.awt.Dimension(160, 120));
-        taConsole.setName(""); // NOI18N
-        spConsole.setViewportView(taConsole);
-
-        lbConsole.setText("Mensagens");
 
         tpOptionsPanel.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
 
@@ -171,7 +162,7 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
                     .addComponent(tfScreenLimitY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btScreenLimit)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
 
         tpOptionsPanel.addTab("Tela", pnScreenConfig);
@@ -307,7 +298,7 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
                 .addComponent(btLoadFileList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btClearAllSavedPointLists)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         tpOptionsPanel.addTab("Lista de Pontos", pnPoints);
@@ -382,13 +373,6 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
 
         pnSurface.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Surperfície"));
 
-        btDataStructure.setText("Construir Estrutura de Dados");
-        btDataStructure.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btDataStructureMouseClicked(evt);
-            }
-        });
-
         btLight.setText("Aplicar Iluminação");
         btLight.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -410,9 +394,8 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             .addGroup(pnSurfaceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnSurfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btDataStructure, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                    .addComponent(btLight, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                    .addComponent(btSurface, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btSurface, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                    .addComponent(btLight, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnSurfaceLayout.setVerticalGroup(
@@ -420,9 +403,63 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             .addGroup(pnSurfaceLayout.createSequentialGroup()
                 .addComponent(btSurface)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btLight)
+                .addContainerGap())
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Estrutura de Dados"));
+
+        btDataStructure.setText("Construir Estrutura de Dados");
+        btDataStructure.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btDataStructureMouseClicked(evt);
+            }
+        });
+
+        btDrawEdges.setText("Desenhar Arestas");
+        btDrawEdges.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btDrawEdgesMouseClicked(evt);
+            }
+        });
+
+        btDrawVertexes.setText("Desenhar Vértices");
+        btDrawVertexes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btDrawVertexesMouseClicked(evt);
+            }
+        });
+
+        btDrawFaces.setText("Desenhar Faces");
+        btDrawFaces.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btDrawFacesMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btDataStructure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btDrawEdges, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btDrawVertexes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btDrawFaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(btDataStructure)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btLight))
+                .addComponent(btDrawVertexes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btDrawEdges)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btDrawFaces))
         );
 
         javax.swing.GroupLayout pnFunctionsLayout = new javax.swing.GroupLayout(pnFunctions);
@@ -433,7 +470,8 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnFunctionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnBSpline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnSurface, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnSurface, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnFunctionsLayout.setVerticalGroup(
@@ -441,8 +479,10 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFunctionsLayout.createSequentialGroup()
                 .addComponent(pnBSpline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnSurface, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addComponent(pnSurface, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 48, Short.MAX_VALUE))
         );
 
         tpOptionsPanel.addTab("Funções", pnFunctions);
@@ -563,12 +603,25 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(pnTests, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 165, Short.MAX_VALUE))
+                .addGap(0, 189, Short.MAX_VALUE))
         );
 
         tpOptionsPanel.addTab("Testes", jPanel1);
 
         tpOptionsPanel.setSelectedIndex(1);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Mensagens"));
+
+        taConsole.setEditable(false);
+        taConsole.setColumns(20);
+        taConsole.setLineWrap(true);
+        taConsole.setRows(7);
+        taConsole.setToolTipText("");
+        taConsole.setWrapStyleWord(true);
+        taConsole.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        taConsole.setMaximumSize(new java.awt.Dimension(160, 120));
+        taConsole.setName(""); // NOI18N
+        spConsole.setViewportView(taConsole);
 
         btClearConsole.setText("Limpar mensagens");
         btClearConsole.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -577,12 +630,32 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btClearConsole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(spConsole))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btClearConsole))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbScreenMaxY)
                     .addComponent(lbScreenMinY))
@@ -593,46 +666,34 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
                         .addComponent(lbScreenMinX)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbScreenMaxX)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spConsole, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btClearConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tpOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(lbConsole)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tpOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbScreenMaxY)
                         .addGap(568, 568, 568)
                         .addComponent(lbScreenMinY))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tpOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                .addComponent(lbConsole)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btClearConsole))
-                            .addComponent(pnScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbScreenMinX)
-                            .addComponent(lbScreenMaxX))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbScreenMaxX)
+                            .addComponent(lbScreenMinX)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tpOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -929,13 +990,16 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
         graphics.dispose();
     }
     
-    private void paintPoint(Point3D point) {
+    private Color getRandomColor() {
         Random random = new Random();
         float r = random.nextFloat();
         float g = random.nextFloat();
         float b = random.nextFloat();
-        Color randomColor = new Color(r, g, b);
-        paintPoint(point, randomColor);
+        return new Color(r, g, b);
+    }
+    
+    private void paintPoint(Point3D point) {
+        paintPoint(point, getRandomColor());
     }
     
     private void paintPoint(Point3D point, Color color) {
@@ -947,6 +1011,14 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             graphics.fillOval(point.x,point.y,6,6);
             graphics.dispose();
         }
+    }
+    
+    private void paintPoint(PointDouble3D point) {
+        paintPoint(new Point3D(point));
+    }
+    
+    private void paintPoint(PointDouble3D point, Color color) {
+        paintPoint(new Point3D(point), color);
     }
     
     private void paintPointList(PointList pointList) {
@@ -1504,42 +1576,11 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             dataStructurePoints = getSurfacePoints(dataStructurePoints, precisionPoints, surfacePrecision);
             deslocatedDataStructurePoints = getProjectedSurfacePoints(deslocatedDataStructurePoints, precisionPoints, surfacePrecision, fieldOfView);
             drawDataStructure(dataStructurePoints, deslocatedDataStructurePoints);
+            estruturaDeDadosDaSuperficie = DataStructure.generate(dataStructurePoints, deslocatedDataStructurePoints);
+            taConsole.append(estruturaDeDadosDaSuperficie.toString());
         }
         else
             taConsole.append(String.format("\nA estrutura de dados não pôde ser gerada!\nDesenhe primeiro a superfície."));
-        // <editor-fold defaultstate="collapsed" desc="CONSTRUCTING DATA STRUCTURE">       
-        /*if (pointVectorSurfacePoints != null && deslocatedPointVectorSurfacePoints != null &&
-            pointVectorSurfacePoints.length > 0 && deslocatedPointVectorSurfacePoints.length >= 0) {
-            
-            Vertex[] vertexes = new Vertex[4];
-            vertexes[0] = new Vertex("V1", pointVectorSurfacePoints[0]);
-            vertexes[1] = new Vertex("V2", deslocatedPointVectorSurfacePoints[0]);
-            vertexes[2] = new Vertex("V3", deslocatedPointVectorSurfacePoints[deslocatedPointVectorSurfacePoints.length - 1]);
-            vertexes[3] = new Vertex("V4", pointVectorSurfacePoints[pointVectorSurfacePoints.length - 1]);
-            
-            Edge[] edges = new Edge[4];
-            edges[0] = new Edge("A1", vertexes[0], vertexes[1]);
-            edges[1] = new Edge("A2", vertexes[1], vertexes[2]);
-            edges[2] = new Edge("A3", vertexes[2], vertexes[3]);
-            edges[3] = new Edge("A4", vertexes[3], vertexes[0]);
-            
-            Face[] faces = new Face[2];
-            faces[0] = new Face("F1", edges[0], edges[1], edges[2], edges[3]);
-            faces[1] = new Face("F2", edges[0], edges[3], edges[2], edges[1]);
-            
-            estruturaDeDadosDaSuperficie = new DataStructure2();
-            estruturaDeDadosDaSuperficie.setVertexes(vertexes);
-            estruturaDeDadosDaSuperficie.setEdges(edges);
-            estruturaDeDadosDaSuperficie.setFaces(faces);
-            
-            taConsole.append(String.format("\nA estrutura de dados foi gerada com sucesso!"));
-            taConsole.append(String.format("\n\n%s", estruturaDeDadosDaSuperficie.toString()));
-            
-            JOptionPane.showMessageDialog(this, estruturaDeDadosDaSuperficie.toString(), "Estrutura", 1);
-        }
-        else
-            taConsole.append(String.format("\nA estrutura de dados não pôde ser gerada!\nDesenhe primeiro a curva B-Spline."));*/
-        // </editor-fold> 
     }
     
     private void drawDataStructure(PointDouble3D[] dataStructurePoints, PointDouble3D[] deslocatedDataStructurePoints) {
@@ -1940,6 +1981,47 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
             drawLightDirection();
         }
     }//GEN-LAST:event_btLight2MouseClicked
+
+    @SuppressWarnings("static-access")
+    private void btDrawEdgesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDrawEdgesMouseClicked
+        disableEnablePointingButton();
+        if (pointVectorSurfacePoints != null && deslocatedPointVectorSurfacePoints != null &&
+            pointVectorSurfacePoints.length > 0 && deslocatedPointVectorSurfacePoints.length > 0) {
+            for (Edge e : estruturaDeDadosDaSuperficie.edges) {
+                drawLine(e.vertex1.vertex, e.vertex2.vertex, getRandomColor());
+            }    
+        }
+        else
+            taConsole.append(String.format("\nNão foi possível desenhar as arestas.\nDesenhe primeiro a superfície."));
+    }//GEN-LAST:event_btDrawEdgesMouseClicked
+
+    @SuppressWarnings("static-access")
+    private void btDrawVertexesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDrawVertexesMouseClicked
+        disableEnablePointingButton();
+        if (pointVectorSurfacePoints != null && deslocatedPointVectorSurfacePoints != null &&
+            pointVectorSurfacePoints.length > 0 && deslocatedPointVectorSurfacePoints.length > 0) {
+            for (Vertex v : estruturaDeDadosDaSuperficie.vertexes)
+                paintPoint(v.vertex);
+        }
+        else
+            taConsole.append(String.format("\nNão foi possível desenhar os vértices.\nDesenhe primeiro a superfície."));
+    }//GEN-LAST:event_btDrawVertexesMouseClicked
+
+    @SuppressWarnings("static-access")
+    private void btDrawFacesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDrawFacesMouseClicked
+        disableEnablePointingButton();
+        if (pointVectorSurfacePoints != null && deslocatedPointVectorSurfacePoints != null &&
+            pointVectorSurfacePoints.length > 0 && deslocatedPointVectorSurfacePoints.length > 0) {
+            for (Face f : estruturaDeDadosDaSuperficie.faces) {
+                Color c = getRandomColor();
+                drawLine(f.edge1.vertex1.vertex, f.edge1.vertex2.vertex, c);
+                drawLine(f.edge2.vertex1.vertex, f.edge2.vertex2.vertex, c);
+                drawLine(f.edge3.vertex1.vertex, f.edge3.vertex2.vertex, c);
+            }    
+        }
+        else
+            taConsole.append(String.format("\nNão foi possível desenhar as faces.\nDesenhe primeiro a superfície."));
+    }//GEN-LAST:event_btDrawFacesMouseClicked
 // </editor-fold>
     
     public static void main(String args[]) {
@@ -1977,6 +2059,9 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
     private javax.swing.JButton btDeletePointList;
     private javax.swing.JButton btDrawBSpline;
     private javax.swing.JButton btDrawBiggestDistance;
+    private javax.swing.JButton btDrawEdges;
+    private javax.swing.JButton btDrawFaces;
+    private javax.swing.JButton btDrawVertexes;
     private javax.swing.JButton btEditPoints;
     private javax.swing.JToggleButton btEnablePointing;
     private javax.swing.JButton btLight;
@@ -1996,7 +2081,8 @@ public class CurvaBSplineQuadratica extends javax.swing.JFrame {
     private javax.swing.JButton btTest4;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lbConsole;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbSavedListPoints;
     private javax.swing.JLabel lbScreenLimitX;
     private javax.swing.JLabel lbScreenMaxX;

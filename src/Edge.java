@@ -14,6 +14,6 @@ public class Edge {
     
     @Override
     public String toString() {
-        return String.format("%s: [%s,%s]", this.name, vertex1.name, vertex2.name); 
+        return String.format("%s: [%s,%s]", this.name, this.vertex1.name, this.vertex2.name); 
     }
 }
